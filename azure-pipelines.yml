@@ -1,27 +1,30 @@
-# Node.js
-# Build a general Node.js project with npm.
+# C# and .NET Core
+# Build and run a C# project with .NET Core 7.0.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
 - master
+
 pool:
   vmImage: ubuntu-latest
 
-
 variables:
-  LT_USERNAME: 'chrisedaid'
-  LT_ACCESS_KEY: 'sUokuXXV8qpV7rh4LNw1WxhEycCplKmK7yoSgRnYLlPsHcXHLR'
+  LT_USERNAME: 'ritamg'
+  LT_ACCESS_KEY: 'TK7DCf2rFcBJzT3IHz4kD47lThhsHckrlGtiGkYyetAcixtrj5'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test'
+  steps:
+  - task: UseDotNet@2
+    inputs:
+      version: '7.x'  # Set the desired .NET SDK version
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+    displayName: 'Install .NET SDK'
 
-- script: |
-    npm install
-    npm install -g protractor
-    cd conf
-    protractor single.conf.js
-  displayName: 'npm install and build'
+  - script: |
+      dotnet restore
+      dotnet build --configuration Release
+      dotnet test --configuration Release --no-restore
+    displayName: 'Build and Test C# project'
