@@ -10,8 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  LT_USERNAME: 'ritamg'
-  LT_ACCESS_KEY: 'TK7DCf2rFcBJzT3IHz4kD47lThhsHckrlGtiGkYyetAcixtrj5'
+  LT_USERNAME: 'aakashv'
+  LT_ACCESS_KEY: '2DBvazguRgzIJGua9Oktes9XuMImkFOPOKbFv4yhEoghk6rI0j'
 
 jobs:
 - job: BuildAndTest
