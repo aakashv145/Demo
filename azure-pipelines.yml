@@ -12,6 +12,7 @@ pool:
 variables:
   LT_USERNAME: 'aakashv'
   LT_ACCESS_KEY: '2DBvazguRgzIJGua9Oktes9XuMImkFOPOKbFv4yhEoghk6rI0j'
+  BUILD: 'build'
 
 jobs:
 - job: BuildAndTest
